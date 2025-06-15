@@ -65,20 +65,20 @@ O sistema será desenvolvido em três versões, de forma incremental:
 
 ---
 
-## 💡 Observações
+## Observações
 
 - Esta primeira versão **não utiliza banco de dados** — os dados são armazenados em memória.
 - Ainda **não há autenticação**. Essa funcionalidade será adicionada na terceira etapa.
 
 ---
 
-## 📁 Status do Projeto
+## Status do Projeto
 
-🟡 **Versão 1 em desenvolvimento**
+🟡 **Versão 1 finalizada**
 
 ---
 
-## ✍️ Autor
+## Autor
 
 **Luis Antonio Colombelli**  
 Desenvolvedor Backend em formação com foco em JavaScript e Node.js.
