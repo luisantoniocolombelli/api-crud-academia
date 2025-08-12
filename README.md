@@ -1,84 +1,104 @@
+# API CRUD Academia
 
-# Sistema de Cadastro para Academia (Backend)
+## 📋 Descrição do Projeto
+API RESTful para gerenciamento de cadastros de uma academia, desenvolvida com Node.js, Express e MongoDB.
 
-Este é um projeto backend desenvolvido em **JavaScript** com **Node.js** e **Express**, seguindo o padrão de arquitetura **MVC**. O sistema foi pensado para uma academia pequena, onde apenas duas pessoas (o dono e o professor) utilizarão o sistema. Os clientes da academia não terão acesso ao sistema.
-
----
-
-## Estrutura do Projeto
-
-O projeto está organizado dentro da pasta `src`, com separação por responsabilidades:
-
-```
-src/
-├── controllers/         # Controladores que tratam as requisições
-├── models/              # Modelos com dados em memória (sem banco de dados)
-├── routes/              # Rotas da API
-├── app.js               # Configuração principal do Express
-└── server.js            # Inicialização do servidor
-```
-
----
-
-## Etapas de Desenvolvimento
-
-O sistema será desenvolvido em três versões, de forma incremental:
-
-1. **Versão 1** – Backend funcional com dados em memória (sem persistência e sem autenticação).
-2. **Versão 2** – Integração com banco de dados para persistência (provavelmente MongoDB ou SQLite).
-3. **Versão 3** – Implementação de autenticação passwordless e criação de uma interface (views).
-
----
-
-## Tecnologias Utilizadas
-
+## 🛠️ Tecnologias Utilizadas
 - Node.js
 - Express
-- JavaScript (ES6+)
-- Arquitetura MVC
+- MongoDB
+- Mongoose ODM
+- dotenv
 
----
+## 📦 Pré-requisitos
+- Node.js (versão 14 ou superior)
+- MongoDB
+- NPM ou Yarn
 
-## Como Executar
+## 🚀 Instalação
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/luisantoniocolombelli/academia-backend.git
-   cd academia-backend
-   ```
+1. Clone o repositório
+```bash
+git clone https://github.com/luisantoniocolombelli/api-crud-academia.git
+```
 
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
+2. Instale as dependências
+```bash
+cd api-crud-academia
+npm install
+```
 
-3. Inicie o servidor:
-   ```bash
-   node src/server.js
-   ```
+3. Crie o arquivo .env e configure as variáveis de ambiente
 
-4. Acesse as rotas no navegador ou com ferramentas como o Postman:
-   - `GET /registers`
-   - `POST /registers`
-   - `PUT /registers/:id`
-   - `DELETE /registers/:id`
 
----
+4. Inicie o servidor
+```bash
+npm start
+```
 
-## Observações
+## 📚 Documentação da API
 
-- Esta primeira versão **não utiliza banco de dados** — os dados são armazenados em memória.
-- Ainda **não há autenticação**. Essa funcionalidade será adicionada na terceira etapa.
+### Endpoints
 
----
+#### Criar Registro
+```http
+POST /registers
+```
+| Parâmetro | Tipo     | Descrição           |
+| :-------- | :------- | :------------------ |
+| `name`    | `string` | **Obrigatório**     |
+| `email`   | `string` | **Obrigatório**     |
+| `phone`   | `string` | **Obrigatório**     |
+| `address` | `string` | **Obrigatório**     |
 
-## Status do Projeto
+#### Listar Registros
+```http
+GET /registers
+```
 
-🟡 **Versão 1 finalizada**
+#### Buscar Registro por ID
+```http
+GET /registers/:id
+```
 
----
+#### Atualizar Registro
+```http
+PUT /registers/:id
+```
 
-## Autor
+#### Deletar Registro
+```http
+DELETE /registers/:id
+```
 
-**Luis Antonio Colombelli**  
-Desenvolvedor Backend em formação com foco em JavaScript e Node.js.
+### Exemplos de Requisição
+
+#### Criar Novo Registro
+```json
+{
+  "name": "João Silva",
+  "email": "joao@email.com",
+  "phone": "11999999999",
+  "address": "Rua Teste, 123"
+}
+```
+
+## 📝 Estrutura do Projeto
+```
+api-crud-academia/
+├── src/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   └── app.js
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+## ✒️ Autor
+Luis Antonio Colombelli - [GitHub](https://github.com/luisantoniocolombelli)
+
+## 📞 Contato
+- LinkedIn: [Luis Antonio Colombelli](https://linkedin.com/in/luisantoniocolombelli)
