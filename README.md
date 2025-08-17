@@ -88,9 +88,11 @@ DELETE /registers/:id
 api-crud-academia/
 ├── src/
 │   ├── controllers/
+|   ├── database/
 │   ├── models/
 │   ├── routes/
-│   └── app.js
+│   ├── app.js
+|   └── server.js
 ├── .env
 ├── .gitignore
 ├── package.json
