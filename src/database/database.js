@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-async function databaseConnection() {
+export async function databaseConnection() {
     try { 
         await mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
         console.log('Conectado ao banco de dados');
@@ -9,5 +9,3 @@ async function databaseConnection() {
         process.exit(1);
     }
 }
-
-module.exports = databaseConnection;

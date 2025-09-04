@@ -1,10 +1,10 @@
 require('dotenv').config();
-const database = require('./database/database');
-const app = require('./app');
+import { databaseConnection } from './database/database';
+import app from './app';
 
 const PORT = process.env.PORT
 
-database();
+databaseConnection();
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando: http://localhost:${PORT}`);
