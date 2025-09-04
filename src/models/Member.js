@@ -7,7 +7,7 @@ const memberSchema = new mongoose.Schema({
     phone: { type: Number, required: true, trim: true },
     address: { type: String, required: true, trim: true },
     status: { type: String, enum: ['ativo', 'inativo'], default: 'ativo' },
-    workout: { type: mongoose.Schema.Types.ObjectId, ref: 'Workout', required: true }
+    workout: { type: String, enum: ["Musculação", "Crossfit", "Pilates", "Funcional"], required: true }
 }, {
     timestamps: true
 });
