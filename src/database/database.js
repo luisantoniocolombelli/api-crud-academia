@@ -11,4 +11,4 @@ export async function databaseConnection() {
         console.error('Erro ao conectar ao banco de dados:', error.message);
         process.exit(1);
     }
-}
+};

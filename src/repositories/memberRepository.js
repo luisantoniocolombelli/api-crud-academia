@@ -1,66 +1,60 @@
 import Member from '../models/Member.js';
 import mongoose from 'mongoose';
 
+const isValidObjectId = (id) => {
+    if (mongoose.Types.ObjectId.isValid(id)) {
+        throw new Error('ID inválido');
+    }
+};
+
+const executeDatabaseCall = async (callback) => {
+    try {
+        return await callback();
+    } catch (error) {
+    console.error('Erro no repositorio', error);
+    if (error instanceof mongoose.Error.ValidationError) {
+        throw new Error(`Erro de validação: ${error.message}`);
+    }
+    if (error.message === 'ID inválido') {
+        return null;
+    }
+    throw new Error('Erro ao processar a operação no banco de dados');
+    }
+};
+
 export class MemberRepository {
 
-    async createMember(data) {
-        try {
-            const newMember = new Member(data);
+    async createMember(memberData) {
+        return await executeDatabaseCall(async () => {
+            const newMember = new Member(memberData);
             return await newMember.save();
-        } catch (error) {
-            if (error instanceof mongoose.Error.ValidationError) {
-                throw new Error(`Erro de validação: ${error.message}`);
-            }
-            console.error("Erro ao criar membro", error)
-            throw new Error('Erro ao criar membro');
-        }
-    }
+        });
+    };
 
     async getAllMembers() {
-        try {
+        return await executeDatabaseCall(async () => {
             return await Member.find();
-        } catch (error) {
-            console.error("Erro ao buscar membros", error)
-            throw new Error('Erro ao buscar membros');
-        }
-    }
+        });
+    };
 
     async getMemberById(id) {
-        try {
-            if (!mongoose.Types.ObjectId.isValid(id)) {
-                return null;
-            }
+        isValidObjectId(id);
+        return await executeDatabaseCall(async () => {
             return await Member.findById(id);
-        } catch (error) {
-            console.error("Erro ao buscar membro", error)
-            throw new Error('Erro ao buscar membro');
-        }
-    }
+        });
+    };
 
-    async updateMember(id, data) {
-        try {
-            if (!mongoose.Types.ObjectId.isValid(id)) {
-                return null;
-            }
-            return await Member.findByIdAndUpdate(id, data, { new: true });
-        } catch (error) {
-            if (error instanceof mongoose.Error.ValidationError) {
-                throw new Error(`Erro de validação: ${error.message}`);
-            }
-            console.error("Erro ao atualizar membro", error)
-            throw new Error('Erro ao atualizar membro');
-        }
-    }
+    async updateMember(id, memberData) {
+        isValidObjectId(id);
+        return await executeDatabaseCall(async () => {
+            return await Member.findByIdAndUpdate(id, memberData, { new: true });
+        });
+    };
 
     async deleteMember(id) {
-        try {
-            if (!mongoose.Types.ObjectId.isValid(id)) {
-                return null;
-            }
+        isValidObjectId(id);
+        return await executeDatabaseCall(async () => {
             return await Member.findByIdAndDelete(id);
-        } catch (error) {
-            console.error("Erro ao deletar membro", error)
-            throw new Error('Erro ao deletar membro');
-        }
-    }
-}
+        });
+    };
+};
