@@ -1,14 +1,13 @@
-const express = require('express');
+import express from 'express';
+import router from 'express';
+import memberController from '../controllers/memberController.js';
+
 const router = express.Router();
-const registersController = require("../controllers/registersController");
 
-router.get('/', registersController.index);
-router.get('/:id', registersController.read);
+router.post('/', memberController.create);
+router.get('/', memberController.index);
+router.get('/:id', memberController.read);
+router.patch('/:id', memberController.update);
+router.delete('/:id', memberController.delete);
 
-router.post('/', registersController.create);
-
-router.put('/:id', registersController.update);
-
-router.delete('/:id', registersController.delete);
-
-module.exports = router;
+export default router;
