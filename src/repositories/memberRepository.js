@@ -1,4 +1,4 @@
-import Member from '../models/Member.js';
+import { Member } from '../models/Member.js';
 import mongoose from 'mongoose';
 
 const isValidObjectId = (id) => {
@@ -22,7 +22,7 @@ const executeDatabaseCall = async (callback) => {
     }
 };
 
-export class MemberRepository {
+class MemberRepository {
 
     async createMember(memberData) {
         return await executeDatabaseCall(async () => {
@@ -58,3 +58,5 @@ export class MemberRepository {
         });
     };
 };
+
+export default new MemberRepository();

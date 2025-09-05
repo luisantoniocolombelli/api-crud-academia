@@ -1,8 +1,8 @@
-require('dotenv').config();
-import { databaseConnection } from './database/database';
-import app from './app';
+import 'dotenv/config';
+import { databaseConnection } from './database/database.js';
+import app from './app.js';
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 databaseConnection();
 

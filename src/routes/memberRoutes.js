@@ -1,11 +1,12 @@
 import express from 'express';
+import memberController from '../controllers/memberController.js';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.status(200).json({
-        message: 'Bem-vindo à API de Membros!',
-        version: '1.0.0',
+        message: 'Bem-vindo à API de registro de membros de uma academia!',
+        version: '1.1',
         routes: {
             'GET /members/:id': 'Busca um membro por ID.',
             'PATCH /members/:id': 'Atualiza um membro por ID.',

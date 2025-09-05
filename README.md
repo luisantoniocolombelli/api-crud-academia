@@ -1,21 +1,23 @@
-# API CRUD Academia
+# API CRUD Academia v1.1
 
-## 📋 Descrição do Projeto
-API RESTful para gerenciamento de cadastros de uma academia, desenvolvida com Node.js, Express e MongoDB.
+## Descrição do Projeto
+API RESTful para gerenciamento de registro de membros de uma academia, desenvolvida com Node.js, Express e MongoDB.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - Node.js
 - Express
 - MongoDB
 - Mongoose ODM
 - dotenv
+- Zod
 
-## 📦 Pré-requisitos
+## Pré-requisitos
 - Node.js (versão 14 ou superior)
 - MongoDB
+- MongoDB Compass ou a extensão do MongoDB para VSCode (auxilia na visualização dos dados manipulados)
 - NPM ou Yarn
 
-## 🚀 Instalação
+## Instalação
 
 1. Clone o repositório
 ```bash
@@ -36,7 +38,7 @@ npm install
 npm start
 ```
 
-## 📚 Documentação da API
+## Documentação da API
 
 ### Endpoints
 
@@ -48,27 +50,29 @@ POST /registers
 | :-------- | :------- | :------------------ |
 | `name`    | `string` | **Obrigatório**     |
 | `email`   | `string` | **Obrigatório**     |
-| `phone`   | `string` | **Obrigatório**     |
+| `phone`   | `number` | **Obrigatório**     |
 | `address` | `string` | **Obrigatório**     |
+| `status`  | `string` | **Ativo/Inativo**   |
+| `workout` | `string` | **Obrigatório**     |
 
 #### Listar Registros
 ```http
-GET /registers
+GET /members
 ```
 
 #### Buscar Registro por ID
 ```http
-GET /registers/:id
+GET /members/:id
 ```
 
 #### Atualizar Registro
 ```http
-PUT /registers/:id
+PATCH /members/:id
 ```
 
 #### Deletar Registro
 ```http
-DELETE /registers/:id
+DELETE /members/:id
 ```
 
 ### Exemplos de Requisição
@@ -79,18 +83,22 @@ DELETE /registers/:id
   "name": "João Silva",
   "email": "joao@email.com",
   "phone": "11999999999",
-  "address": "Rua Teste, 123"
+  "address": "Rua Teste, 123",
+  "status": "ativo",
+  "workout": "Musculação"
 }
 ```
 
-## 📝 Estrutura do Projeto
+## Estrutura do Projeto
 ```
 api-crud-academia/
 ├── src/
 │   ├── controllers/
 |   ├── database/
 │   ├── models/
+|   ├── repositories/
 │   ├── routes/
+|   ├── schemas
 │   ├── app.js
 |   └── server.js
 ├── .env
@@ -99,8 +107,8 @@ api-crud-academia/
 └── README.md
 ```
 
-## ✒️ Autor
+## Autor
 Luis Antonio Colombelli - [GitHub](https://github.com/luisantoniocolombelli)
 
-## 📞 Contato
+## Contato
 - LinkedIn: [Luis Antonio Colombelli](https://linkedin.com/in/luisantoniocolombelli)

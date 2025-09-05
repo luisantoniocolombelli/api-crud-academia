@@ -1,14 +1,14 @@
-const express = require('express');
-const registerRoutes = require('./routes/registerRoutes');
+import express from 'express';
+import memberRoutes from './routes/memberRoutes.js';
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/registers', registerRoutes);
+app.use('/members', memberRoutes);
 
 app.use((req, res) => {
-  res.status(404).json({ error: 'Rota não encontrada' });
+  res.status(404).json({ message: 'Rota não encontrada.' });
 });
 
-module.exports = app;
+export default app;

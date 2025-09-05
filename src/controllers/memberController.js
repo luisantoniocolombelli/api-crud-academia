@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createMemberSchema, updateMemberSchema } from '../schema';
+import { createMemberSchema, updateMemberSchema } from '../schemas/memberSchema.js';
 import memberService from '../services/memberService.js';
 
 const handleRequest = async (serviceFunction, res, successStatus, ...args) => {
@@ -19,7 +19,7 @@ const handleZodValidation = (schema, req, res, serviceCall) => {
         serviceCall(validatedData);
     } catch (error) {
         if (error instanceof z.ZodError) {
-            return res.status(400).json({ message: "Dados de entrada inválidos", errors: error.issues.map(issue => ({path: issue.path.join('.'), message: issue.message}))});
+            return res.status(400).json({ message: 'Dados de entrada inválidos', errors: error.issues.map(issue => ({path: issue.path.join('.'), message: issue.message}))});
         } res.status(500).json({ message: 'Erro ao processar requisição', error: error.message });
     }
 };
@@ -48,3 +48,13 @@ export const updateMember = async(req, res) => {
 export const deleteMember = async(req, res) => {
     await handleRequest(memberService.deleteMember, res, 204, req.params.id);
 };
+
+const memberController = {
+    createMember,
+    getAllMembers,
+    getMemberById,
+    updateMember,
+    deleteMember,
+};
+
+export default memberController;
