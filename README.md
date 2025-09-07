@@ -1,9 +1,12 @@
 # API CRUD Academia v1.1
 
 ## Descrição do Projeto
+
 API RESTful para gerenciamento de registro de membros de uma academia, desenvolvida com Node.js, Express e MongoDB.
+Este projeto agora usa a arquitetura em camadas MVC + Repositories + Services e também um middleware de validação de dados.
 
 ## Tecnologias Utilizadas
+
 - Node.js
 - Express
 - MongoDB
@@ -12,6 +15,7 @@ API RESTful para gerenciamento de registro de membros de uma academia, desenvolv
 - Zod
 
 ## Pré-requisitos
+
 - Node.js (versão 14 ou superior)
 - MongoDB
 - MongoDB Compass ou a extensão do MongoDB para VSCode (auxilia na visualização dos dados manipulados)
@@ -20,11 +24,13 @@ API RESTful para gerenciamento de registro de membros de uma academia, desenvolv
 ## Instalação
 
 1. Clone o repositório
+
 ```bash
 git clone https://github.com/luisantoniocolombelli/api-crud-academia.git
 ```
 
 2. Instale as dependências
+
 ```bash
 cd api-crud-academia
 npm install
@@ -32,8 +38,8 @@ npm install
 
 3. Crie o arquivo .env e configure as variáveis de ambiente
 
-
 4. Inicie o servidor
+
 ```bash
 npm start
 ```
@@ -43,34 +49,40 @@ npm start
 ### Endpoints
 
 #### Criar Registro
+
 ```http
 POST /registers
 ```
-| Parâmetro | Tipo     | Descrição           |
-| :-------- | :------- | :------------------ |
-| `name`    | `string` | **Obrigatório**     |
-| `email`   | `string` | **Obrigatório**     |
-| `phone`   | `number` | **Obrigatório**     |
-| `address` | `string` | **Obrigatório**     |
-| `status`  | `string` | **Ativo/Inativo**   |
-| `workout` | `string` | **Obrigatório**     |
+
+| Parâmetro | Tipo     | Descrição         |
+| :-------- | :------- | :---------------- |
+| `name`    | `string` | **Obrigatório**   |
+| `email`   | `string` | **Obrigatório**   |
+| `phone`   | `number` | **Obrigatório**   |
+| `address` | `string` | **Obrigatório**   |
+| `status`  | `string` | **Ativo/Inativo** |
+| `workout` | `string` | **Obrigatório**   |
 
 #### Listar Registros
+
 ```http
 GET /members
 ```
 
 #### Buscar Registro por ID
+
 ```http
 GET /members/:id
 ```
 
 #### Atualizar Registro
+
 ```http
 PATCH /members/:id
 ```
 
 #### Deletar Registro
+
 ```http
 DELETE /members/:id
 ```
@@ -78,6 +90,7 @@ DELETE /members/:id
 ### Exemplos de Requisição
 
 #### Criar Novo Registro
+
 ```json
 {
   "name": "João Silva",
@@ -90,6 +103,7 @@ DELETE /members/:id
 ```
 
 ## Estrutura do Projeto
+
 ```
 api-crud-academia/
 ├── src/
@@ -108,7 +122,9 @@ api-crud-academia/
 ```
 
 ## Autor
+
 Luis Antonio Colombelli - [GitHub](https://github.com/luisantoniocolombelli)
 
 ## Contato
-- LinkedIn: [Luis Antonio Colombelli](https://linkedin.com/in/luisantoniocolombelli)
+
+LinkedIn: [Luis Antonio Colombelli](https://linkedin.com/in/luisantoniocolombelli)
